@@ -1,14 +1,17 @@
+import random
 from ursina import *
 
 app = Ursina()
-ground = Entity(
-    model = 'cube',
-    color = color.magenta,
-    z = -.1,
-    y = -3,
-    origin = (0, .5),
-    scale = (50, 1, 10),
-    collider = 'box'
-)
+random_color = lambda: color.colors[random.choice(color.color_names)]
+
+################################################################################
+
+first_cube = Entity(model='cube', texture='white_cube', color=random_color(), rotation=(45, 25, 0))
+
+def update():
+    first_cube.rotation_x += 35 * time.dt
+    first_cube.rotation_y += 20 * time.dt
+
+################################################################################
 
 app.run()
