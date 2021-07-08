@@ -6,11 +6,22 @@ random_color = lambda: color.colors[random.choice(color.color_names)]
 
 ################################################################################
 
-first_cube = Entity(model='cube', texture='white_cube', color=random_color(), rotation=(45, 25, 0))
+a_lot_of_cubes = list()
+for x in range(16 * 16):
+    random_position = (
+        random.randint(-10, 10),
+        random.randint(-10, 10),
+        random.randint(-10, 10),
+    )
 
-def update():
-    first_cube.rotation_x += 35 * time.dt
-    first_cube.rotation_y += 20 * time.dt
+    a_lot_of_cubes.append(
+        Entity(
+            model="cube",
+            texture="white_cube",
+            color=random_color(),
+            position=random_position,
+        )
+    )
 
 ################################################################################
 
